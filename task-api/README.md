@@ -171,5 +171,5 @@ task-api/
 - **No database** is used — tasks are stored in memory inside the repository layer. This keeps the focus entirely on **architecture and layer separation**, which is the stated goal of the exercise.
 - Clean, incremental Git commits were made as each layer was built.
 - The architecture follows the "well-structured modular monolith" pattern recommended in the lecture — microservices and distributed complexity are explicitly **not** the starting point.
-```
+
 
