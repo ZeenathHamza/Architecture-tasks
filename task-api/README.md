@@ -51,7 +51,7 @@ This project follows a strict 3-layer architecture. Each layer has exactly **one
 
 ---
 
-##How Layer Separation Is Maintained
+##  How Layer Separation Is Maintained
 
 ### 1. Controllers (`src/controllers/taskController.js`)
 - Only deal with `req` and `res`.
