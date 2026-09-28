@@ -20,32 +20,33 @@ This project follows a strict 3-layer architecture. Each layer has exactly **one
 ### Request Flow
 
 ```
-[Client]
-   │  HTTP request (POST /tasks, JSON body)
-   ▼
-[Router]              src/index.js
-   │  matches route → controller method
-   ▼
-[Controller]          src/controllers/taskController.js
-   │  extracts req.body / req.params
-   │  calls service (no rules applied here)
-   ▼
-[Service]             src/services/taskService.js
-   │  validates rules, throws Error if broken
-   │  calls repository (no storage knowledge)
-   ▼
-[Repository]          src/repositories/taskRepository.js
-   │  save / find / update / delete
-   │  (in-memory array in this project)
-   ▼
-[Storage]             ← returns data back up the chain
-   ▲
-   │  data flows back: Repository → Service → Controller
-   │
-[Controller]          res.status(...).json(...)
-   │
-   ▼
-[Client]              ← receives JSON response
+1. Client sends HTTP request (e.g., POST /tasks).
+
+2. Router in src/index.js matches URL + method to a controller function.
+
+3. Controller receives req and res.
+
+4. Controller extracts input (req.body, req.params) — no rules applied.
+
+5. Controller calls the Service.
+
+6. Service applies business rules (e.g., "title required").
+
+7. If rule fails, Service throws a plain Error.
+
+8. If rules pass, Service calls the Repository.
+
+9. Repository does the storage operation (in-memory array here).
+
+10. Repository returns data up to the Service.
+
+11. Service returns result to the Controller.
+
+12. Controller maps result/error to an HTTP status code.
+
+13. Controller sends JSON response via res.json(...).
+
+14. Client receives the response.
 ```
 
 ---
