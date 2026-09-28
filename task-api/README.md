@@ -1,6 +1,4 @@
-Here's the **updated README.md** with `index.js` everywhere. Just copy everything between the horizontal lines and paste it into your `README.md` file.
 
----
 
 ```markdown
 # Task Management API
